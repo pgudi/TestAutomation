@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Testng Unit Tests">
+  <test name="Users and Products">
+     <classes>
+       <class name="com.sgtesting.tests.users.Users">
+       		<methods>
+       			<include name="createUser"></include>
+       		</methods>
+       </class>
+       
+       <class name="com.sgtesting.tests.products.Products">
+       		<methods>
+       			<exclude name="createProduct"></exclude>
+       		</methods>
+       </class>
+     </classes>
+  </test>
+</suite>
