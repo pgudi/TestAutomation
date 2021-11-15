@@ -12,13 +12,13 @@ public class Products {
 		System.out.println("The Product demoProduct1 has created Successfully");
 	}
 	
-	@Test
+	@Test(dependsOnMethods= {"createProduct"})
 	public void modifyProduct()
 	{
 		System.out.println("The Product demoProduct1 has modified Successfully");
 	}
 	
-	@Test
+	@Test(dependsOnMethods= {"modifyProduct"})
 	public void deleteProduct()
 	{
 		System.out.println("The Product demoProduct1 has deleted Successfully");
