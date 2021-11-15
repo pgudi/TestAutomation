@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Groups of Tests">
+	<test name="Tests">
+		<groups>
+			<run>
+				<include name="regression"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="com.sgtesting.groupsdemo.TestCases"></class>
+		</classes>
+	</test>
+</suite>
