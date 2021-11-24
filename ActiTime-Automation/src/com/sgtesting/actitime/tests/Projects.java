@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Projects {
 	
-	public static WebDriver oBrowser=null;
+	
 	/**
 	 * Testcase ID:
 	 * Module Name:
@@ -17,7 +17,7 @@ public class Projects {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void createProject()
+	public static void createProject(WebDriver oBrowser)
 	{
 		try
 		{
@@ -40,7 +40,7 @@ public class Projects {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void modifyProject()
+	public static void modifyProject(WebDriver oBrowser)
 	{
 		try
 		{
@@ -63,7 +63,7 @@ public class Projects {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void deleteProject()
+	public static void deleteProject(WebDriver oBrowser)
 	{
 		try
 		{

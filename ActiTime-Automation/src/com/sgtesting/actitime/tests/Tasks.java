@@ -4,7 +4,7 @@ import org.openqa.selenium.WebDriver;
 
 public class Tasks {
 	
-	public static WebDriver oBrowser=null;
+	
 	/**
 	 * Testcase ID:
 	 * Module Name:
@@ -17,7 +17,7 @@ public class Tasks {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void createTasks()
+	public static void createTasks(WebDriver oBrowser)
 	{
 		try
 		{
@@ -40,7 +40,7 @@ public class Tasks {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void modifyTasks()
+	public static void modifyTasks(WebDriver oBrowser)
 	{
 		try
 		{
@@ -63,7 +63,7 @@ public class Tasks {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void deleteTasks()
+	public static void deleteTasks(WebDriver oBrowser)
 	{
 		try
 		{

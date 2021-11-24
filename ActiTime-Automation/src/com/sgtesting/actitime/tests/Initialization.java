@@ -19,7 +19,7 @@ public class Initialization {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void launchBrowser()
+	public static WebDriver launchBrowser()
 	{
 		try
 		{
@@ -30,6 +30,7 @@ public class Initialization {
 		{
 			e.printStackTrace();		
 		}
+		return oBrowser;
 	}
 	/**
 	 * Testcase ID:
@@ -43,7 +44,7 @@ public class Initialization {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void navigate()
+	public static void navigate(WebDriver oBrowser)
 	{
 		try
 		{
@@ -67,7 +68,7 @@ public class Initialization {
 	 * Purpose:
 	 * Description:
 	 */
-	public static void closeApplication()
+	public static void closeApplication(WebDriver oBrowser)
 	{
 		
 		try
