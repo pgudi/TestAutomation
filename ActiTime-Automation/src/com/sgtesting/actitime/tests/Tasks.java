@@ -1,76 +1,67 @@
 package com.sgtesting.actitime.tests;
 
-import org.openqa.selenium.WebDriver;
-
 public class Tasks {
 	
-	
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
+	 * Created Date:
 	 * Reviewed By:
-	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Test case ID:
+	 * parameters:
+	 * return type:
 	 * Purpose:
 	 * Description:
 	 */
-	public static void createTasks(WebDriver oBrowser)
+	public static void createTask()
 	{
 		try
 		{
 			
 		}catch(Exception e)
 		{
-			e.printStackTrace();		
-		}
-	}
-
-	/**
-	 * Testcase ID:
-	 * Module Name:
-	 * Created By:
-	 * Reviewed By:
-	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
-	 * Purpose:
-	 * Description:
-	 */
-	public static void modifyTasks(WebDriver oBrowser)
-	{
-		try
-		{
-			
-		}catch(Exception e)
-		{
-			e.printStackTrace();		
+			e.printStackTrace();
 		}
 	}
 	
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
+	 * Created Date:
 	 * Reviewed By:
-	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Test case ID:
+	 * parameters:
+	 * return type:
 	 * Purpose:
 	 * Description:
 	 */
-	public static void deleteTasks(WebDriver oBrowser)
+	public static void modifyTask()
 	{
 		try
 		{
 			
 		}catch(Exception e)
 		{
-			e.printStackTrace();		
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * Created By:
+	 * Created Date:
+	 * Reviewed By:
+	 * Test case ID:
+	 * parameters:
+	 * return type:
+	 * Purpose:
+	 * Description:
+	 */
+	public static void deleteTask()
+	{
+		try
+		{
+			
+		}catch(Exception e)
+		{
+			e.printStackTrace();
 		}
 	}
 

@@ -3,6 +3,7 @@ package com.sgtesting.actitime.datatable;
 import java.io.FileInputStream;
 import java.util.Calendar;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.DateUtil;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -12,127 +13,116 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class Datatable {
 	public static Workbook wb=null;
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
-	 * Reviewed By:
 	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Reviewed By:
+	 * Test Case ID:
+	 * @Parameters :
+	 * @return :
 	 * Purpose:
 	 * Description:
 	 */
-	public int rowCount(String filename,String sheetname)
+	public int rowCount(String fileName,String sheetName)
 	{
 		FileInputStream fin=null;
 		Workbook wb=null;
 		Sheet sh=null;
-		int rowcount=0;
+		int rc=0;
 		try
 		{
-			fin=new FileInputStream(filename);
+			fin=new FileInputStream(fileName);
 			wb=new XSSFWorkbook(fin);
-			sh=wb.getSheet(sheetname);
+			sh=wb.getSheet(sheetName);
 			if(sh==null)
 			{
 				return -1;
 			}
-			rowcount=sh.getPhysicalNumberOfRows();
+			rc=sh.getPhysicalNumberOfRows();
 		}catch(Exception e)
 		{
 			e.printStackTrace();
-		}
-		finally
+		}finally
 		{
 			try
 			{
 				fin.close();
 				wb.close();
-				sh=null;
 			}catch(Exception e)
 			{
 				e.printStackTrace();
 			}
 		}
-		return rowcount-1;
+		return rc-1;
 	}
-
+	
+	
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
-	 * Reviewed By:
 	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Reviewed By:
+	 * Test Case ID:
+	 * @Parameters :
+	 * @return :
 	 * Purpose:
 	 * Description:
 	 */
-	public boolean importExcelFile(String filename)
+	public boolean importExcelFile(String fileName)
 	{
 		FileInputStream fin=null;
-		boolean isFileLoaded=false;
 		try
 		{
-			fin=new FileInputStream(filename);
+			fin=new FileInputStream(fileName);
 			wb=new XSSFWorkbook(fin);
-			if(wb!=null)
+			if(wb==null)
 			{
-				isFileLoaded=true;
+				return false;
 			}
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		return isFileLoaded;
+		return true;
 	}
+
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
-	 * Reviewed By:
 	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Reviewed By:
+	 * Test Case ID:
+	 * @Parameters :
+	 * @return :
 	 * Purpose:
 	 * Description:
 	 */
-	public int rowCount(String sheetname)
+	public int rowCount(String sheetName)
 	{
 		Sheet sh=null;
-		int rowcount=0;
+		int rc=0;
 		try
 		{
-			sh=wb.getSheet(sheetname);
+			sh=wb.getSheet(sheetName);
 			if(sh==null)
 			{
 				return -1;
 			}
-			rowcount=sh.getPhysicalNumberOfRows();
+			rc=sh.getPhysicalNumberOfRows();
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-
-		return rowcount-1;
+		return rc-1;
 	}
-
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
-	 * Reviewed By:
 	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Reviewed By:
+	 * Test Case ID:
+	 * @Parameters :
+	 * @return :
 	 * Purpose:
 	 * Description:
 	 */
-	public String getCellData(String FileName,String SheetName,String colName,int rownum)
+	public String getCellData(String fileName,String sheetName,String columnName,int rownum)
 	{
 		FileInputStream fin=null;
 		Workbook wb=null;
@@ -143,23 +133,19 @@ public class Datatable {
 		int colNum=0;
 		try
 		{
-			fin=new FileInputStream(FileName);
+			fin=new FileInputStream(fileName);
 			wb=new XSSFWorkbook(fin);
-			if (wb ==null)
+			sh=wb.getSheet(sheetName);
+			if(sh==null)
 			{
-				return null;
-			}
-			sh=wb.getSheet(SheetName);
-			if (sh==null) 
-			{
-				return null;
+				strCellData=null;
 			}
 			row=sh.getRow(0);
-			for (int c=0;c<row.getPhysicalNumberOfCells();c++)
+			for(int c=0;c<row.getPhysicalNumberOfCells();c++)
 			{
 				cell=row.getCell(c);
-				String ColumnValue=cell.getStringCellValue();
-				if (ColumnValue.trim().equalsIgnoreCase(colName.trim()))
+				String colName=cell.getStringCellValue();
+				if(columnName.trim().equalsIgnoreCase(colName.trim()))
 				{
 					colNum=c;
 					break;
@@ -167,19 +153,19 @@ public class Datatable {
 			}
 			row=sh.getRow(rownum-1);
 			cell=row.getCell(colNum);
-			if (cell==null || cell.getCellType()==cell.getCellType().BLANK)
+			if(cell==null||cell.getCellType()==CellType.BLANK)
 			{
 				strCellData="";
 			}
-			else if(cell.getCellType()==cell.getCellType().STRING)
+			else if(cell.getCellType()==CellType.STRING)
 			{
 				strCellData=cell.getStringCellValue();
 			}
-			else if(cell.getCellType()==cell.getCellType().BOOLEAN)
+			else if(cell.getCellType()==CellType.BOOLEAN)
 			{
 				strCellData=String.valueOf(cell.getBooleanCellValue());
 			}
-			else if(cell.getCellType()==cell.getCellType().NUMERIC)
+			else if(cell.getCellType()==CellType.FORMULA ||cell.getCellType()==CellType.NUMERIC)
 			{
 				if (DateUtil.isCellDateFormatted(cell))
 				{
@@ -197,7 +183,6 @@ public class Datatable {
 					strCellData=String.valueOf(cell.getNumericCellValue());
 				}
 			}
-
 		}catch(Exception e)
 		{
 			e.printStackTrace();
@@ -217,18 +202,16 @@ public class Datatable {
 	}
 	
 	/**
-	 * Testcase ID:
-	 * Module Name:
 	 * Created By:
-	 * Reviewed By:
 	 * Modified By:
-	 * Return Value:
-	 * Parameters:
-	 * Modified Date:
+	 * Reviewed By:
+	 * Test Case ID:
+	 * @Parameters :
+	 * @return :
 	 * Purpose:
 	 * Description:
 	 */
-	public String getCellData(String SheetName,String colName,int rownum)
+	public String getCellData(String sheetName,String columnName,int rownum)
 	{
 		Sheet sh=null;
 		Row row=null;
@@ -237,17 +220,17 @@ public class Datatable {
 		int colNum=0;
 		try
 		{
-			sh=wb.getSheet(SheetName);
-			if (sh==null) 
+			sh=wb.getSheet(sheetName);
+			if(sh==null)
 			{
-				return null;
+				strCellData=null;
 			}
 			row=sh.getRow(0);
-			for (int c=0;c<row.getPhysicalNumberOfCells();c++)
+			for(int c=0;c<row.getPhysicalNumberOfCells();c++)
 			{
 				cell=row.getCell(c);
-				String ColumnValue=cell.getStringCellValue();
-				if (ColumnValue.trim().equalsIgnoreCase(colName.trim()))
+				String colName=cell.getStringCellValue();
+				if(columnName.trim().equalsIgnoreCase(colName.trim()))
 				{
 					colNum=c;
 					break;
@@ -255,19 +238,19 @@ public class Datatable {
 			}
 			row=sh.getRow(rownum-1);
 			cell=row.getCell(colNum);
-			if (cell==null || cell.getCellType()==cell.getCellType().BLANK)
+			if(cell==null||cell.getCellType()==CellType.BLANK)
 			{
 				strCellData="";
 			}
-			else if(cell.getCellType()==cell.getCellType().STRING)
+			else if(cell.getCellType()==CellType.STRING)
 			{
 				strCellData=cell.getStringCellValue();
 			}
-			else if(cell.getCellType()==cell.getCellType().BOOLEAN)
+			else if(cell.getCellType()==CellType.BOOLEAN)
 			{
 				strCellData=String.valueOf(cell.getBooleanCellValue());
 			}
-			else if(cell.getCellType()==cell.getCellType().NUMERIC)
+			else if(cell.getCellType()==CellType.FORMULA ||cell.getCellType()==CellType.NUMERIC)
 			{
 				if (DateUtil.isCellDateFormatted(cell))
 				{
@@ -285,20 +268,11 @@ public class Datatable {
 					strCellData=String.valueOf(cell.getNumericCellValue());
 				}
 			}
-
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
 		return strCellData;
 	}
-	public static void main(String[] args) {
-		Datatable obj=new Datatable();
-
-		String path=System.getProperty("user.dir");
-		String filename=path+"\\Controller\\data_Controller.xlsx";
-		String val=obj.getCellData(filename, "Scenarios", "DOJ", 4);
-		System.out.println(val);
-	}
-
+	
 }
